@@ -1,6 +1,6 @@
 # Custom Ruby Enumerable Methods (just a few)
 
-This is a solo project as a way to enforce my understanding of creating and using ruby methods, module and the enumerator. In this project, I implemented some commonly used enumerable methods as part of the ruby built-in Enumerable module Array and Enumerator classes. Check below to full list of the methods implemented in this project.
+This is a solo project as a way to enforce my understanding of creating and using ruby methods, module and enumerator. In this project, I implemented some commonly used enumerable methods as part of the ruby built-in Enumerable module for Array and Enumerator classes. Check below to the full list of methods implemented in this project.
 
 This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
@@ -21,7 +21,8 @@ The methods implemented in this project include:
 - #my_count
 - #my_map
 - #my_inject
-  > Note: #my_inject is a partial implementation as it does not take into account certain complexities
+
+  > _Note: #my_inject is a partial implementation as it does not take into account certain complexities._
 
 ## Usage
 
@@ -37,13 +38,26 @@ $ git clone https://github.com/ebukaume/custom-ruby-enumerable-methods.git
 $ cd custom-ruby-enumerable-methods
 ```
 
-> load the module. Note: make sure to prepend the current path
+> load the module. _Note: make sure to prepend the current path_
 
 ```ruby
 require "./custom-methods.rb>"
 ```
 
 > Then use the methods like you would use built-in ruby enumerable methods
+
+```ruby
+arr = [2,3,4,5].my_each {|val| puts "#{val} apples!"}
+
+# => 2 apples!
+# => 3 apples!
+# => 4 apples!
+# => 5 apples!
+
+puts (1..10).my_count {|num| num % 2 == 0}
+
+# => 5
+```
 
 ## Contributors
 
