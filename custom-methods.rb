@@ -113,8 +113,8 @@ module Enumerable
     end
 end
 
-# Task number 10: method to test #my_inject
-def multiply_els(arr)
-    arr.my_inject {|product, current| product * current}
-end
+# # Task number 10: method to test #my_inject
+# def multiply_els(arr)
+#     arr.my_inject {|product, current| product * current}
+# end
 
