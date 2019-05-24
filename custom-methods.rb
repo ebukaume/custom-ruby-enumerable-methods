@@ -1,11 +1,8 @@
 module Enumerable
     private 
     def convert_to_array(obj)
-        if obj.respond_to?(:to_a)
-            return obj.to_a
-        else
-            return NoMethodError.new("undefined method `#{caller_locations[-2].label}' for #{obj}:#{obj.class})")
-        end
+        return obj.to_a if obj.respond_to?(:to_a)
+        return NoMethodError.new("undefined method `#{caller_locations[-2].label}' for #{obj}:#{obj.class})")
     end
 
     public
@@ -41,11 +38,8 @@ module Enumerable
             puts "#{caller[0].split(":")[0..-2].join(":")}: warning: any given block will not be used because an argument was already passed" if block_given?
             return as_array.grep(arg[0]).length == as_array.length ? true : false
         end
-        if block_given?
-            0.upto(as_array.length - 1) {|index| return false unless yield(as_array[index])}
-        else
-            0.upto(as_array.length - 1) {|index| return false if as_array[index] == nil || as_array[index] == false}
-        end
+        0.upto(as_array.length - 1) {|index| return false unless yield(as_array[index])} if block_given?
+        0.upto(as_array.length - 1) {|index| return false if as_array[index] == nil || as_array[index] == false}
         true
     end
 
@@ -56,11 +50,8 @@ module Enumerable
             puts "#{caller[0].split(":")[0..-2].join(":")}: warning: any given block will not be used because an argument was already passed" if block_given?
             return as_array.grep(arg[0]).empty? ? false : true
         end
-        if block_given?
-            0.upto(as_array.length - 1) {|index| return true if yield(as_array[index])}
-        else
-            0.upto(as_array.length - 1) {|index| return true unless as_array[index] == nil || as_array[index] == false}
-        end
+        0.upto(as_array.length - 1) {|index| return true if yield(as_array[index])} if block_given?
+        0.upto(as_array.length - 1) {|index| return true unless as_array[index] == nil || as_array[index] == false}   
         false
     end
 
@@ -71,11 +62,8 @@ module Enumerable
             puts "#{caller[0].split(":")[0..-2].join(":")}: warning: any given block will not be used because an argument was already passed" if block_given?
             return as_array.grep(arg[0]).empty? ? true : false
         end
-        if block_given?
-            0.upto(as_array.length - 1) {|index| return false if yield(as_array[index])}
-        else
-            0.upto(as_array.length-1) {|index| return false unless as_array[index] == nil || as_array[index] == false}
-        end
+        0.upto(as_array.length - 1) {|index| return false if yield(as_array[index])} if block_given?
+        0.upto(as_array.length-1) {|index| return false unless as_array[index] == nil || as_array[index] == false}
         true
     end
     
