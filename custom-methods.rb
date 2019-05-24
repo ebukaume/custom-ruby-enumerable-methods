@@ -4,7 +4,7 @@ module Enumerable
         begin
             return obj.to_a
         rescue NoMethodError
-            return "#{NoMethodError} (undefined method `#{caller_locations[-2].label}' for #{obj}:#{obj.class})"
+            return NoMethodError.new("undefined method `#{caller_locations[-2].label}' for #{obj}:#{obj.class})")
         end
     end
 
@@ -94,6 +94,7 @@ module Enumerable
         as_array = convert_to_array(self)
         return as_array unless as_array.is_a?(Array)
         result = []
+        raise ArgumentError.new("Supplied argument not a proc") unless proc.is_a? Proc
         unless proc.empty?
             0.upto(as_array.length - 1) {|index| result << proc[0].call(as_array[index])}
             return result
@@ -118,3 +119,5 @@ end
 #     arr.my_inject {|product, current| product * current}
 # end
 
+g = 9
+4.my_map(g)
