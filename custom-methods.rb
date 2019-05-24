@@ -99,7 +99,7 @@ module Enumerable
             return result
         end
         return self.to_enum(:my_map) unless block_given?
-        0.upto(as_array.length - 1) {|index| result << yield(as_array[index])} if block_given?
+        0.upto(as_array.length - 1) {|index| result << yield(as_array[index])}
         result
     end
 
