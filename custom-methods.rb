@@ -1,9 +1,9 @@
 module Enumerable
     private 
     def convert_to_array(obj)
-        begin
+        if obj.respond_to?(:to_a)
             return obj.to_a
-        rescue NoMethodError
+        else
             return NoMethodError.new("undefined method `#{caller_locations[-2].label}' for #{obj}:#{obj.class})")
         end
     end
