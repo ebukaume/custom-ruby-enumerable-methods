@@ -118,6 +118,3 @@ end
 # def multiply_els(arr)
 #     arr.my_inject {|product, current| product * current}
 # end
-
-g = 9
-4.my_map(g)
