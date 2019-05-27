@@ -91,7 +91,7 @@ module Enumerable
         as_array = convert_to_array(self)
         return as_array unless as_array.is_a?(Array)
         result = []
-        raise ArgumentError.new("Supplied argument not a proc") unless proc.is_a? Proc
+        raise ArgumentError.new("Supplied argument not a proc") unless block_given? || proc.is_a?(Proc)
         unless proc.empty?
             0.upto(as_array.length - 1) {|index| result << proc[0].call(as_array[index])}
             return result
@@ -111,7 +111,7 @@ module Enumerable
     end
 end
 
-# # Task number 10: method to test #my_inject
-# def multiply_els(arr)
-#     arr.my_inject {|product, current| product * current}
-# end
+
+def multiply_els(arr)
+    arr.my_inject {|product, current| product * current}
+end
