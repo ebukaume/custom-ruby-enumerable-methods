@@ -87,5 +87,3 @@ end
 def multiply_els(arr)
     arr.my_inject {|product, current| product * current}
 end
-
-p [2,3,4,6].my_any? {|x| x.even?}
